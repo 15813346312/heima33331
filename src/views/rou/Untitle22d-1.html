@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 复制剪贴板 -->
+  <div id="aaa">111111111111</div>
+  <button onclick="copy">复制</button>
+  
+  <!-- 元素的dataset,可以访问元素的自定义数据属性 -->
+  <div id="user" data-name="zhang" data-age="23" data-sm="just do it">go</div>
+
+ 
+
+</body>
+
+<script>
+  // console.log(navigator);
+  function copy() {
+    // 获取节点
+    var aaaa = document.getElementById('aaa')
+    // 获取节点的内容，也就是被复制文本
+    var text = aaaa.firstChild.nodeValue
+    console.log(text); // 111111111111
+    // 复制到剪切板
+    function copyToClipboard(text) {
+      // navagator是js的一个自定义对象，索引浏览器都支持，作用是提供浏览器信息
+      navigator.clipboard.writeText(text);// 打印navigator
+      console.log(text);
+    }
+    copyToClipboard(text) // 需要调用并且传入参数，否则不成功
+  }
+  copy() // 需要调用，否则不执行
+
+  // 可以访问元素的自定义数据属性
+  const user = document.getElementById('user');
+  console.log(user.dataset);
+
+  // <!-- 利用reduce对数组求和 -->
+  const myArr = [10,20,30,40]
+  const sum = (total,currentValue) => total + currentValue
+  // 数组使用reduce的累加器
+  console.log(myArr.reduce(sum)); // reduce接受一个函数作为累加器，所以要先设置好这个累加器
+</script>
+</html>

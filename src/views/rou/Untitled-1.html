@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body id="app">
+
+</body>
+<script>
+  // url里的？和&的作用：？是链接域名和参数，&是链接不同的参数，参数的间隔符。
+    var url = 'http://www.world.cn/geek?tag=javascript&name=pwwww&age=24'
+    // 1.用split（‘？）把url分成两部分，一部分是协议加域名，就是左边那部分。另一部分右边，是参数和参数名
+    var temp1 = url.split('?')
+    // console.log(temp1);
+    var parm = temp1[1] // 索引1，右边部分
+    var keyValue = parm.split('&')
+    // console.log(keyValue);
+    // 键值对在一起
+    var obj = {}
+    // 参数一组，参数名一组
+    var keyObj = []
+    var valueObj = []
+    // for(var i = 0; i < keyValue.length; i++) {
+    //   var item = keyValue[i].split('=')// 每一个item都是独立的，里面有两个数。一个参数名一个参数值
+    //   console.log(item); // 这里会有3个打印
+    //   var key = item[0]
+    //   var value = item[1]
+    //   // 给对象添加属性
+    //   obj[key] = value
+    //   console.log(obj);
+    // }
+    var obj = {}
+    keyValue.forEach((itemobj) => { // 传入item，对应的是遍历数组的小item
+      // console.log('item:',item);
+      var item = itemobj.split('=')
+      // console.log(item);
+      var key = item[0]
+      var value = item[1]
+      obj[key] = value
+      console.log(obj);
+    })
+    console.log(obj);
+
+
+console.log('新的');
+    let obj2 = {
+      part1: {
+        name: '零一',
+        age: 23
+      }
+    }
+const { part1:{name, age}} = obj2
+console.log(name, age);
+
+// console.log(part1); // 报错，part1未定义，因为把name和age从part1里解构出来了，就无法使用obj中的part1 属性了
+// 所以可以多次解构，const {part1, part1: {name, age}} = obj!!!,此时多次解构，就不会为定义
+const aaa = 1_000_000_000 // 使用数字分隔符，打印出来不会有这个数字分隔符
+console.log(aaa); // 定义数字常量，使用数字分隔符
+
+function demo () {
+  try {
+    return 1
+  } catch (err) {
+    console.log(err)
+    return 2
+  } finally {
+    return 3
+  }
+}
+console.log(demo()); // 得出结论，还是finally最厉害
+console.log(new Error().stack);
+const str = Math.random().toString(36).substr(2,10) // substr（），从start开始截取长度length（为啥要截取，因为有小数点啊，从索引是2开始截取，0.12hdjwe，就是第三位了），随机生成10位数的字符串
+console.log(str);
+
+    //获取视口内的xy坐标
+//     document.addEventListener('click', (e) => {
+//       console.log(e);
+//     console.log(`Mouse X: ${e.clientX}, Mouse Y: ${e.clientY}`);
+// })
+</script>
+
+</html>
